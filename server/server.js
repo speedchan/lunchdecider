@@ -15,7 +15,8 @@ connection.connect(err => {
     if (err) {
         console.log("Error: ", err)
     } else {
-        console.log("Connected: ", connection)
+        console.log(`Connected to mysql database ${process.env.DATABASE}`)
+        // console.log("Connected: ", connection)
     }
 })
 
