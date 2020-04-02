@@ -2,9 +2,7 @@ const express = require('express');
 const mysql = require('mysql');
 const PORT = process.env.PORT || 3000;
 const app = express();
-// require('dotenv').config({path: '../.env.local'})
-console.log(__dirname)
-require('dotenv').config({path: __dirname + '\.env.local'})
+require('dotenv').config();
 
 const connection = mysql.createConnection({
     host: process.env.HOST,
@@ -17,7 +15,7 @@ connection.connect(err => {
     if (err) {
         console.log("Error: ", err)
     } else {
-        // console.log("Connected: ", connection)
+        console.log("Connected: ", connection)
     }
 })
 
