@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './../assets/images/logo.svg';
 import './../assets/style/App.css';
 
 class App extends Component {
@@ -9,19 +8,18 @@ class App extends Component {
   }
 
   callAPI(){
-    fetch("http://localhost:3001/testAPI")
+    fetch("http://localhost:3001/")
     .then(res => {
       return res.text()
     })
     .then(res => {
-      this.setState({ apiResponse: res })
       console.log(res)
+      this.setState({ apiResponse: res })
     })
     .catch(err => {
-      console.log(err)
+      console.log("Error fetching data from API: ", err)
     });
   }
-
   componentDidMount(){
     this.callAPI();
   }
@@ -29,12 +27,11 @@ class App extends Component {
   render(){
     return (
       <div className="App">
+        Hello.
           <p>{this.state.apiResponse}</p>
       </div>
     );
-    
   }
-
 }
 
 export default App;
