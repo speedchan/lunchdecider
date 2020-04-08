@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Login from './Login'
 import Home from './Home'
 import About from './About'
+import Register from './Register'
 
 class App extends Component {
   constructor(props){
@@ -46,6 +47,9 @@ class App extends Component {
                 <li>
                   <Link to="/login">Login</Link>
                 </li>
+                <li>
+                  <Link to="/register">Register</Link>
+                </li>
               </ul>
               <hr/> 
               {/* A <Switch> looks through all its children <Route>
@@ -62,6 +66,9 @@ class App extends Component {
                   </Route>
                   <Route exact path="/login">
                     <Login />
+                  </Route>
+                  <Route exact path="/register">
+                    <Register />
                   </Route>
                 </Switch>
             </div>
