@@ -1,5 +1,7 @@
 const path = require('path');
 const mysql = require('mysql');
+const crypto = require('crypto');
+const hashPassword = require('../hash.js');
 
 module.exports = (app, connection) => {
     app.get('/', (req, res) => {
@@ -24,8 +26,10 @@ module.exports = (app, connection) => {
         
         let {email, password} = req.body;
         console.log("reqbody:",req.body)
-        console.log("EMAILPW: ",email, password)
-        connection.query(`INSERT INTO user (email, password) VALUES ('${email}', '${password}')`,(err, results) => {
+        // let hashedPassword = hashPassword(password)
+        // console.log("hashedPassword:", hashedPassword)
+        // STOP BECAUSE error 500 
+        connection.query(`INSERT INTO user (email, password) VALUES ('${email}', '${hashedPassword.password}', '${hashedPassword.salt}')`,(err, results) => {
             if(err){
                 return res.send(err)
             } else {
